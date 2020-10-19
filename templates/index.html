@@ -1,0 +1,75 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content=""/>
+    <meta name="keywords" content=""/>
+    <title>Social</title>
+
+    {% include 'includes/stylesheets.html' %}
+    {% csrf_token %}
+
+</head>
+<body>
+<div class="theme-layout">
+
+    <div class="topbar stick">
+
+
+        <div class="top-area">
+            <div class="top-search">
+                <form method="post" class="">
+                    <input type="text" placeholder="Search Friend">
+                    <button data-ripple><i class="ti-search"></i></button>
+                </form>
+            </div>
+            <ul class="setting-area">
+                <li><a href="{% url 'accounts:register' %}">Register</a></li>
+                <li><a href="{% url 'accounts:login' %}">Login</a></li>
+                <li><a href="{% url 'features:home' %}" title="Home" data-ripple=""><i class="ti-home"></i></a></li>
+
+                <li>
+                    <a href="#" title="Notification" data-ripple="">
+                        <i class="ti-user"></i><span id="total-friend-notifications"></span>
+                    </a>
+                    <div class="dropdowns">
+                        <ul class="drops-menu" id="friend-menu">
+                        </ul>
+
+                    </div>
+                </li>
+
+            </ul>
+
+            <span class="ti-menu main-menu" data-ripple=""></span>
+        </div>
+    </div><!-- topbar -->
+
+    {% block content %}{% endblock %}
+
+    <footer>
+        <div class="container">
+            <div class="row">
+
+            </div>
+        </div>
+    </footer><!-- footer -->
+    <div class="bottombar">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <span class="copyright">©. All rights reserved.</span>
+                    <i><img src="images/credit-cards.png" alt=""></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% include 'includes/scripts.html' %}
+{% block scripts %}{% endblock %}
+
+</body>
+</html>

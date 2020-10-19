@@ -1,0 +1,131 @@
+  {% load static%}
+<!doctype html>
+<html lang="zxx">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>About</title>
+  <!-- Template CSS -->
+  <link rel="stylesheet" href="static/css/style-starter.css">
+  <!-- Template CSS -->
+  <link href="//fonts.googleapis.com/css?family=Oswald:300,400,500,600&display=swap" rel="stylesheet">
+  <link href="//fonts.googleapis.com/css?family=Lato:300,300i,400,400i,700,900&display=swap" rel="stylesheet">
+  <!-- Template CSS -->
+
+</head>
+
+<style>
+body {
+<!--background-image: url(' ');-->
+   background-repeat: no-repeat;
+   background-attachment: fixed;
+   background-size: cover;
+   opacity: 0.9;
+}
+{font-family: Arial, Helvetica, sans-serif;}
+* {box-sizing: border-box}
+
+/* Full-width input fields */
+input[type=text], input[type=password] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: none;
+  background: #f1f1f1;
+}
+
+input[type=text]:focus, input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+hr {
+  border: 1px solid #f1f1f1;
+  margin-bottom: 25px;
+}
+
+button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: 1px solid #f1f1f1;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+}
+
+button:hover {
+  opacity:2;
+}
+
+ {
+  padding: 14px 20px;
+  background-color: white;
+}
+
+.signupbtn, .cancelbtn {
+  float: left;
+  width: 50%;
+  background-color: black;
+}
+
+.container {
+  padding: 16px;
+}
+
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+@media screen and (max-width: 300px) {
+  .signupbtn, .cancelbtn {
+     width: 100%;
+  }
+
+}
+</style>
+<body>
+
+<section class="w3l-banner-slider-main inner-pagehny">
+
+                <div class="container">
+              <form method="post">
+    {% csrf_token %}
+    {% for field in form %}
+      <p style="color: black;">
+        {{ field.label_tag }}<br>
+        {{ field }}
+        {% if field.help_text %}
+          <small style="color: black">{{ field.help_text }}</small>
+        {% endif %}
+        {% for error in field.errors %}
+          <p style="color: red">{{ error }}</p>
+        {% endfor %}
+      </p>
+    {% endfor %}
+    <button type="submit">Sign Up</button>
+</form>
+
+
+    <div class="clearfix">
+         <a href="{% url 'accounts:login' %}">
+            <button type="button" class="signupbtn">Login</button>
+        </a>
+        <a href="{% url 'accounts:home' %}">
+            <button type="button" class="signupbtn">Cancel</button>
+        </a>
+
+
+    </div>
+  </div>
+
+
+</section>
+</body>
+</html>
